@@ -38,28 +38,20 @@ reutersRemove<-reutersRemove[,-tempColZ]
 write.csv(reutersRemove, "reutersRemove.csv", row.names = F)
 
 
-
-
-
-#Pre-process part
+#Pre-process part#
+#================#
 
 library(tm)
 
 #convert to Corpus
 reutersCorpus<-Corpus(VectorSource(reutersRemove[,50]))
 
-reutersCorpus<-tm_map(reutersCorpus,removeWords, stopwords("english"))
-reutersCorpus<-tm_map(reutersCorpus,removePunctuation)      
-reutersCorpus<-tm_map(reutersCorpus,removeNumbers)
-reutersCorpus<-tm_map(reutersCorpus,tolower)
-reutersCorpus<-tm_map(reutersCorpus,stripWhitespace)
-reutersCorpus<-tm_map(reutersCorpus,PlainTextDocument)
-#remove stopwords
-#remove punctuation
-#remove numbers
-#convert all text to lowercase
-#remove extra whitespace
-#convert corpus to plain text
+reutersCorpus<-tm_map(reutersCorpus,removeWords, stopwords("english"))  #remove stopwords
+reutersCorpus<-tm_map(reutersCorpus,removePunctuation)                  #remove punctuation
+reutersCorpus<-tm_map(reutersCorpus,removeNumbers)                      #remove numbers
+reutersCorpus<-tm_map(reutersCorpus,tolower)                            #convert all text to lowercase
+reutersCorpus<-tm_map(reutersCorpus,stripWhitespace)                    #remove extra whitespace
+reutersCorpus<-tm_map(reutersCorpus,PlainTextDocument)                  #convert corpus to plain text
 
 
 
@@ -178,7 +170,6 @@ library(randomForest)
 #++++++++++++++++++++++++++#
 
 #SVM
-
 SVMLDATrain<-LDATrain
 SVMLDATest<-LDATest
 
@@ -201,7 +192,6 @@ SVMLDATable <- table(SVMLDAPre, SVMLDATest$topic)
 
 
 #naiveBayes
-
 NBLDATrain<-LDATrain
 NBLDATest<-LDATest
 
@@ -224,7 +214,6 @@ NBLDATable <- table(NBLDAPre, NBLDATest$topic)
 
 
 #randomForest
-
 RFLDATrain<-LDATrain
 RFLDATest<-LDATest
 
@@ -298,8 +287,8 @@ evaluationM<-function(eval){
 }
 
 
-#SVM
 
+#SVM
 evaluation(SVMLDATable)
 #                 TN   TP FN  FP  Accuracy     Recall Precision  F-measure
 #topic.acq      1604  601 34  79 0.9512511 0.94645669 0.8838235 0.91406844
@@ -324,7 +313,6 @@ evaluationM(evaluation(SVMLDATable))
 
 
 #naiveBayes
-
 evaluation(NBLDATable)
 #                 TN  TP  FN  FP  Accuracy    Recall  Precision  F-measure
 #topic.acq      1652 436 199  31 0.9007765 0.6866142 0.93361884 0.79128857
@@ -349,7 +337,6 @@ evaluationM(evaluation(NBLDATable))
 
 
 #randomForest
-
 evaluation(RFLDATable)
 #                 TN   TP FN FP  Accuracy    Recall Precision F-measure
 #topic.acq      1626  602 33 57 0.9611734 0.9480315 0.9135053 0.9304482
@@ -410,7 +397,6 @@ write.csv(TFIDFTest, "TFIDFTest.csv", row.names = F)
 
 
 #SVM
-
 SVMTFIDFTrain<-TFIDFTrain
 SVMTFIDFTest<-TFIDFTest
 
@@ -433,7 +419,6 @@ SVMTFIDFTable <- table(SVMTFIDFPre, SVMTFIDFTest$topic)
 
 
 #naiveBayes
-
 NBTFIDFTrain<-TFIDFTrain
 NBTFIDFTest<-TFIDFTest
 
@@ -456,7 +441,6 @@ NBTFIDFTable <- table(NBTFIDFPre, NBTFIDFTest$topic)
 
 
 #randomForest
-
 RFTFIDFTrain<-TFIDFTrain
 RFTFIDFTest<-TFIDFTest
 
@@ -483,7 +467,6 @@ RFTFIDFTable <- table(RFTFIDFPre, RFTFIDFTest$topic)
 
 
 #SVM
-
 evaluation(SVMTFIDFTable)
 #                 TN   TP FN FP  Accuracy    Recall Precision F-measure
 #topic.acq      1595  593 42 88 0.9439172 0.9338583 0.8707783 0.9012158
@@ -508,7 +491,6 @@ evaluationM(evaluation(SVMTFIDFTable))
 
 
 #naiveBayes
-
 evaluation(NBTFIDFTable)
 #                 TN  TP  FN  FP  Accuracy    Recall Precision F-measure
 #topic.acq      1635 516 119  48 0.9279551 0.8125984 0.9148936 0.8607173
@@ -533,7 +515,6 @@ evaluationM(evaluation(NBTFIDFTable))
 
 
 #randomForest
-
 evaluation(RFTFIDFTable)
 #                 TN   TP FN FP  Accuracy     Recall Precision F-measure
 #topic.acq      1631  605 30 52 0.9646247 0.95275591 0.9208524 0.9365325
@@ -596,7 +577,6 @@ write.csv(LDATFIDFTest, "LDATFIDFTest.csv", row.names = F)
 
 
 #SVM
-
 SVMLDATFIDFTrain<-LDATFIDFTrain
 SVMLDATFIDFTest<-LDATFIDFTest
 
@@ -619,7 +599,6 @@ SVMLDATFIDFTable <- table(SVMLDATFIDFPre, SVMLDATFIDFTest$topic)
 
 
 #naiveBayes
-
 NBLDATFIDFTrain<-LDATFIDFTrain
 NBLDATFIDFTest<-LDATFIDFTest
 
@@ -642,7 +621,6 @@ NBLDATFIDFTable <- table(NBLDATFIDFPre, NBLDATFIDFTest$topic)
 
 
 #randomForest
-
 RFLDATFIDFTrain<-LDATFIDFTrain
 RFLDATFIDFTest<-LDATFIDFTest
 
@@ -669,7 +647,6 @@ RFLDATFIDFTable <- table(RFLDATFIDFPre, RFLDATFIDFTest$topic)
 
 
 #SVM
-
 evaluation(SVMLDATFIDFTable)
 #                 TN   TP FN FP  Accuracy    Recall Precision F-measure
 #topic.acq      1627  603 32 56 0.9620362 0.9496063 0.9150228 0.9319938
@@ -694,7 +671,6 @@ evaluationM(evaluation(SVMLDATFIDFTable))
 
 
 #naiveBayes
-
 evaluation(NBLDATFIDFTable)
 #                 TN  TP FN  FP  Accuracy    Recall Precision F-measure
 #topic.acq      1641 538 97  42 0.9400345 0.8472441 0.9275862 0.8855967
@@ -719,7 +695,6 @@ evaluationM(evaluation(NBLDATFIDFTable))
 
 
 #randomForest
-
 evaluation(RFLDATFIDFTable)
 #                 TN   TP FN FP  Accuracy     Recall Precision F-measure
 #topic.acq      1634  597 38 49 0.9624676 0.94015748 0.9241486 0.9320843
@@ -753,13 +728,12 @@ evaluationM(evaluation(RFLDATFIDFTable))
 #==========#
 
 
-#Cluster#
-#=======#
+#Clustering#
+#==========#
 
 
 #based on the evaluation in task 3, LDA+TF*IDF performs best
 #so we will use this features to do the cluster
-
 LDATDMf<-read.csv(file="LDATDMf.csv",header=T,sep=",")
 TFIDFf<-read.csv(file="TFIDFf.csv",header=T,sep=",")
 
@@ -770,7 +744,6 @@ d <- dist(clusterLDATFIDF)
 
 #begin to cluster#
 #++++++++++++++++#
-
 
 #K-means
 clusterKM <- kmeans(clusterLDATFIDF, 10)
@@ -794,7 +767,6 @@ clusterD<-dbscan(clusterLDATFIDF,4,MinPts=5,method="hybrid")
 
 #evaluation part#
 #+++++++++++++++#
-
 
 #K-means
 silKM <- silhouette(clusterKM$cluster, d)

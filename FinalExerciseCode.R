@@ -5,6 +5,10 @@
 setwd("~/Desktop/Term2/CS909DM/exercise/week10/reuters")
 reutersCSV<-read.csv(file="reutersCSV.csv",header=T,sep=",")
 
+#1.1 Cleaning part#
+#=================#
+
+
 #remove the rows without any text
 tempRowT<-c()
 for(i in 1:nrow(reutersCSV)){
@@ -38,8 +42,8 @@ reutersRemove<-reutersRemove[,-tempColZ]
 write.csv(reutersRemove, "reutersRemove.csv", row.names = F)
 
 
-#Pre-process part#
-#================#
+#1.2 Pre-process part#
+#====================#
 
 library(tm)
 
@@ -63,7 +67,9 @@ reutersCorpus<-tm_map(reutersCorpus,PlainTextDocument)                  #convert
 
 library(topicmodels)
 
-#to get LDA features
+#2.1 to get LDA features#
+#=======================#
+
 dtm <- DocumentTermMatrix(reutersCorpus, control = list(wordLengths = c(3,Inf)))
 dtmS<-removeSparseTerms(dtm,sparse=0.95)
 reutersLDA<-LDA(dtmS,10, method = "Gibbs")
@@ -75,7 +81,9 @@ LDATDMf<-as.data.frame(inspect(LDATDM))
 write.csv(LDATDMf, "LDATDMf.csv", row.names = F)
 
 
-#to get TF*IDF features
+#2.2 to get TF*IDF features#
+#==========================#
+
 reutersTFIDF<-weightTfIdf(dtm)
 reutersTFIDFS<-removeSparseTerms(reutersTFIDF,sparse=0.95)
 TFIDFf<-as.data.frame(inspect(reutersTFIDFS))
@@ -728,8 +736,8 @@ evaluationM(evaluation(RFLDATFIDFTable))
 #==========#
 
 
-#Clustering#
-#==========#
+#4.1 Clustering#
+#==============#
 
 
 #based on the evaluation in task 3, LDA+TF*IDF performs best
@@ -765,8 +773,8 @@ clusterD<-dbscan(clusterLDATFIDF,4,MinPts=5,method="hybrid")
 
 
 
-#evaluation part#
-#+++++++++++++++#
+#4.2 evaluation part#
+#===================#
 
 #K-means
 silKM <- silhouette(clusterKM$cluster, d)

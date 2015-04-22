@@ -1,2 +1,4 @@
 # CS909FinalExercise
-CS909 Coursework
+This is the code and datasets of CS909 final coursework.
+
+

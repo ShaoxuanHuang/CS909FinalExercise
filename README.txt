@@ -1,4 +1,3 @@
-# CS909FinalExercise
 This is the repository of CS909 final coursework.
 The codes of coursework is written by R
 

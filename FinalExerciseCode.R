@@ -42,8 +42,8 @@ reutersRemove<-reutersRemove[,-tempColZ]
 write.csv(reutersRemove, "reutersRemove.csv", row.names = F)
 
 
-#1.2 Pre-process part#
-#====================#
+#1.2 Pre-processing part#
+#=======================#
 
 library(tm)
 

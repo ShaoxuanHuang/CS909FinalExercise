@@ -2,16 +2,16 @@ This is the repository of CS909 final coursework.
 The codes of coursework is written by R.
 
 1. The FinalExerciseCode.R file includes all codes and all of these have been tested in following environment:
--R version 3.1.2
+-R       version 3.1.2
 -RStudio Version 0.98.1062
 
 2. The R packages we used:
--package ‘tm’ version 0.6
--package ‘topicmodels’ version 0.2-1
--package ‘e1071’ version 1.6-4
+-package ‘tm’           version 0.6
+-package ‘topicmodels’  version 0.2-1
+-package ‘e1071’        version 1.6-4
 -package ‘randomForest’ version 4.6-10
--package ‘fpc’ version 2.1-9
--package ‘cluster’ version 1.15.3
+-package ‘fpc’          version 2.1-9
+-package ‘cluster’      version 1.15.3
 
 3. It is easy to run these codes, we just need to follow the annotation in FinalExerciseCode.R file.
 

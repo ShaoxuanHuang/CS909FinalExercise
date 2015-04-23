@@ -5,7 +5,7 @@ The codes of coursework is written by R
 -R version 3.1.2
 -RStudio Version 0.98.1062
 
-2.The R packages we need:
+2.The R packages we used:
 -package ‘tm’ version 0.6
 -package ‘topicmodels’ version 0.2-1
 -package ‘e1071’ version 1.6-4
@@ -50,4 +50,4 @@ The codes of coursework is written by R
 		\-Hierarchical Agglomerative
 		\-DBSCAN
  
-5. The dataset folder contains the data saved during coding.
+5. The dataset folder contains the data saved during coding and testing.

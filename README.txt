@@ -1,5 +1,5 @@
 This is the repository of CS909 final coursework.
-The codes of coursework is written by R.
+The codes of exercise 8 is written by R.
 
 1. The FinalExerciseCode.R file includes all codes and all of these have been tested in following environment:
 -R       version 3.1.2
